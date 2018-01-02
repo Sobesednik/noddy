@@ -1,0 +1,24 @@
+{
+  "name": "noddy",
+  "version": "1.0.0",
+  "description": "Parse Node.js version and compare with another one.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "zoroaster test/spec",
+    "test-watch": "zoroaster test/spec --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Sobesednik/noddy.git"
+  },
+  "keywords": ["noddy"],
+  "author": "Anton <anton@sobes.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sobesednik/noddy/issues"
+  },
+  "homepage": "https://github.com/Sobesednik/noddy#readme",
+  "devDependencies": {
+    "zoroaster": "0.5.2"
+  }
+}

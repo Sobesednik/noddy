@@ -1,0 +1,3 @@
+const noddy = require('./')
+
+noddy()
