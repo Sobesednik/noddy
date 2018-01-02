@@ -1,17 +1,26 @@
 {
   "name": "noddy",
   "version": "1.0.0",
-  "description": "Parse Node.js version and compare with another one.",
+  "description": "Parse a Node.js version and compare with another one.",
   "main": "src/index.js",
   "scripts": {
     "test": "zoroaster test/spec",
-    "test-watch": "zoroaster test/spec --watch"
+    "test-watch": "zoroaster test/spec --watch",
+    "test-es5": "zoroaster es5/test/spec",
+    "build-src": "babel src --out-dir es5/src",
+    "build-test": "babel test --out-dir es5/test",
+    "build": "run-s build-src build-test",
+    "b5": "run-s build test-es5"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/Sobesednik/noddy.git"
   },
-  "keywords": ["noddy"],
+  "keywords": [
+    "noddy",
+    "version",
+    "semver"
+  ],
   "author": "Anton <anton@sobes.io>",
   "license": "MIT",
   "bugs": {
@@ -19,6 +28,11 @@
   },
   "homepage": "https://github.com/Sobesednik/noddy#readme",
   "devDependencies": {
-    "zoroaster": "0.5.2"
+    "babel-cli": "6.26.0",
+    "babel-plugin-transform-rename-import": "2.1.1",
+    "babel-preset-env": "1.6.1",
+    "fast-async": "6.3.0",
+    "npm-run-all": "4.1.2",
+    "zoroaster": "0.5.3"
   }
 }
