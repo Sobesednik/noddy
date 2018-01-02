@@ -33,7 +33,7 @@ var parseVersion = function parseVersion() {
 /**
  * Check if Node.js version is greater than the specified one.
  * @param {string} version version to be compared against, e.g., v5.10.0
- * @returns {boolean} Whether the Node.js version is less than the given one.
+ * @returns {boolean} Whether the Node.js version is greater than the given one.
  */
 var nodeGt = function nodeGt(version) {
     var _parseVersion = parseVersion(process.version),
@@ -48,14 +48,102 @@ var nodeGt = function nodeGt(version) {
 
     if (major === nodeMajor) {
         if (minor === nodeMinor) {
-            return nodePatch < patch;
+            return nodePatch > patch;
         }
-        return nodeMinor < minor;
+        return nodeMinor > minor;
     }
     return nodeMajor > major;
 };
 
+/**
+ * Check if Node.js version is greater than or equal to the specified one.
+ * @param {string} version version to be compared against, e.g., v5.10.0
+ * @returns {boolean} Whether the Node.js version is greater than or equal to
+ * the given one.
+ */
+var nodeGte = function nodeGte(version) {
+    var _parseVersion3 = parseVersion(process.version),
+        nodeMajor = _parseVersion3.major,
+        nodeMinor = _parseVersion3.minor,
+        nodePatch = _parseVersion3.patch;
+
+    var _parseVersion4 = parseVersion(version),
+        major = _parseVersion4.major,
+        minor = _parseVersion4.minor,
+        patch = _parseVersion4.patch;
+
+    if (major === nodeMajor && minor === nodeMinor && patch === nodePatch) {
+        return true;
+    }
+
+    if (major === nodeMajor) {
+        if (minor === nodeMinor) {
+            return nodePatch > patch;
+        }
+        return nodeMinor > minor;
+    }
+    return nodeMajor > major;
+};
+
+/**
+ * Check if Node.js version is less than the specified one.
+ * @param {string} version version to be compared against, e.g., v5.10.0
+ * @returns {boolean} Whether the Node.js version is less than the given one.
+ */
+var nodeLt = function nodeLt(version) {
+    var _parseVersion5 = parseVersion(process.version),
+        nodeMajor = _parseVersion5.major,
+        nodeMinor = _parseVersion5.minor,
+        nodePatch = _parseVersion5.patch;
+
+    var _parseVersion6 = parseVersion(version),
+        major = _parseVersion6.major,
+        minor = _parseVersion6.minor,
+        patch = _parseVersion6.patch;
+
+    if (major === nodeMajor) {
+        if (minor === nodeMinor) {
+            return nodePatch < patch;
+        }
+        return nodeMinor < minor;
+    }
+    return nodeMajor < major;
+};
+
+/**
+ * Check if Node.js version is less or equal to the specified one.
+ * @param {string} version version to be compared against, e.g., v5.10.0
+ * @returns {boolean} Whether the Node.js version is less than or equal to the
+ * given one.
+ */
+var nodeLte = function nodeLte(version) {
+    var _parseVersion7 = parseVersion(process.version),
+        nodeMajor = _parseVersion7.major,
+        nodeMinor = _parseVersion7.minor,
+        nodePatch = _parseVersion7.patch;
+
+    var _parseVersion8 = parseVersion(version),
+        major = _parseVersion8.major,
+        minor = _parseVersion8.minor,
+        patch = _parseVersion8.patch;
+
+    if (major === nodeMajor && minor === nodeMinor && patch === nodePatch) {
+        return true;
+    }
+
+    if (major === nodeMajor) {
+        if (minor === nodeMinor) {
+            return nodePatch < patch;
+        }
+        return nodeMinor < minor;
+    }
+    return nodeMajor < major;
+};
+
 module.exports = {
     parseVersion,
-    nodeGt
+    nodeGt,
+    nodeLt,
+    nodeLte,
+    nodeGte
 };

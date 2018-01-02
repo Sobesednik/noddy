@@ -5,39 +5,39 @@ var _require = require('zoroaster/assert'),
 var context = require('../context');
 
 var _require2 = require('../..'),
-    nodeGt = _require2.nodeGt;
+    nodeGte = _require2.nodeGte;
 
 var parseVersionTestSuite = {
     context, // this sets version to v5.10.5
     'should return true when Node\'s major is greater'() {
-        var res = nodeGt('v4.9.3');
+        var res = nodeGte('v4.9.3');
         assert(res);
     },
     'should return true when Node\'s minor is greater'() {
-        var res = nodeGt('v5.9.0');
+        var res = nodeGte('v5.9.0');
         assert(res);
     },
     'should return true when Node\'s patch is greater'() {
-        var res = nodeGt('v5.10.4');
+        var res = nodeGte('v5.10.4');
         assert(res);
     },
     'should return false when Node\'s major is less'() {
-        var res = nodeGt('v6.9.3');
+        var res = nodeGte('v6.9.3');
         assert(!res);
     },
     'should return false when Node\'s minor is less'() {
-        var res = nodeGt('v5.11.0');
+        var res = nodeGte('v5.11.0');
         assert(!res);
     },
     'should return false when Node\'s patch is less'() {
-        var res = nodeGt('v5.10.6');
+        var res = nodeGte('v5.10.6');
         assert(!res);
     },
     'should return false when Node\'s version is equal'() {
         var test = 'v5.10.5';
-        var res = nodeGt(test);
+        var res = nodeGte(test);
         equal(test, process.version);
-        assert(!res);
+        assert(res);
     }
 };
 
