@@ -1,6 +1,6 @@
 {
   "name": "noddy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Parse a Node.js version and compare with another one.",
   "main": "src/index.js",
   "scripts": {
