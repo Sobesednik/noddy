@@ -12,12 +12,12 @@
  * @returns {Version} parsed version
  */
 const parseVersion = (version = process.version) => {
-    const re = /v(\d+)\.(\d+)\.(\d+)/
-    const [, ma, mi, p] = re.exec(version)
-    const major = parseInt(ma, 10)
-    const minor = parseInt(mi, 10)
-    const patch = parseInt(p, 10)
-    return { major, minor, patch }
+  const re = /v(\d+)\.(\d+)\.(\d+)/
+  const [, ma, mi, p] = re.exec(version)
+  const major = parseInt(ma, 10)
+  const minor = parseInt(mi, 10)
+  const patch = parseInt(p, 10)
+  return { major, minor, patch }
 }
 
 /**
@@ -26,20 +26,20 @@ const parseVersion = (version = process.version) => {
  * @returns {boolean} Whether the Node.js version is greater than the given one.
  */
 const nodeGt = (version) => {
-    const {
-        major: nodeMajor,
-        minor: nodeMinor,
-        patch: nodePatch,
-    } = parseVersion(process.version)
+  const {
+    major: nodeMajor,
+    minor: nodeMinor,
+    patch: nodePatch,
+  } = parseVersion(process.version)
 
-    const { major, minor, patch } = parseVersion(version)
-    if (major === nodeMajor) {
-        if (minor === nodeMinor) {
-            return nodePatch > patch
-        }
-        return nodeMinor > minor
+  const { major, minor, patch } = parseVersion(version)
+  if (major === nodeMajor) {
+    if (minor === nodeMinor) {
+      return nodePatch > patch
     }
-    return nodeMajor > major
+    return nodeMinor > minor
+  }
+  return nodeMajor > major
 }
 
 /**
@@ -49,25 +49,25 @@ const nodeGt = (version) => {
  * the given one.
  */
 const nodeGte = (version) => {
-    const {
-        major: nodeMajor,
-        minor: nodeMinor,
-        patch: nodePatch,
-    } = parseVersion(process.version)
+  const {
+    major: nodeMajor,
+    minor: nodeMinor,
+    patch: nodePatch,
+  } = parseVersion(process.version)
 
-    const { major, minor, patch } = parseVersion(version)
+  const { major, minor, patch } = parseVersion(version)
 
-    if (major === nodeMajor && minor === nodeMinor && patch === nodePatch) {
-        return true
+  if (major === nodeMajor && minor === nodeMinor && patch === nodePatch) {
+    return true
+  }
+
+  if (major === nodeMajor) {
+    if (minor === nodeMinor) {
+      return nodePatch > patch
     }
-
-    if (major === nodeMajor) {
-        if (minor === nodeMinor) {
-            return nodePatch > patch
-        }
-        return nodeMinor > minor
-    }
-    return nodeMajor > major
+    return nodeMinor > minor
+  }
+  return nodeMajor > major
 }
 
 /**
@@ -76,20 +76,20 @@ const nodeGte = (version) => {
  * @returns {boolean} Whether the Node.js version is less than the given one.
  */
 const nodeLt = (version) => {
-    const {
-        major: nodeMajor,
-        minor: nodeMinor,
-        patch: nodePatch,
-    } = parseVersion(process.version)
+  const {
+    major: nodeMajor,
+    minor: nodeMinor,
+    patch: nodePatch,
+  } = parseVersion(process.version)
 
-    const { major, minor, patch } = parseVersion(version)
-    if (major === nodeMajor) {
-        if (minor === nodeMinor) {
-            return nodePatch < patch
-        }
-        return nodeMinor < minor
+  const { major, minor, patch } = parseVersion(version)
+  if (major === nodeMajor) {
+    if (minor === nodeMinor) {
+      return nodePatch < patch
     }
-    return nodeMajor < major
+    return nodeMinor < minor
+  }
+  return nodeMajor < major
 }
 
 /**
@@ -99,31 +99,31 @@ const nodeLt = (version) => {
  * given one.
  */
 const nodeLte = (version) => {
-    const {
-        major: nodeMajor,
-        minor: nodeMinor,
-        patch: nodePatch,
-    } = parseVersion(process.version)
+  const {
+    major: nodeMajor,
+    minor: nodeMinor,
+    patch: nodePatch,
+  } = parseVersion(process.version)
 
-    const { major, minor, patch } = parseVersion(version)
+  const { major, minor, patch } = parseVersion(version)
 
-    if (major === nodeMajor && minor === nodeMinor && patch === nodePatch) {
-        return true
+  if (major === nodeMajor && minor === nodeMinor && patch === nodePatch) {
+    return true
+  }
+
+  if (major === nodeMajor) {
+    if (minor === nodeMinor) {
+      return nodePatch < patch
     }
-
-    if (major === nodeMajor) {
-        if (minor === nodeMinor) {
-            return nodePatch < patch
-        }
-        return nodeMinor < minor
-    }
-    return nodeMajor < major
+    return nodeMinor < minor
+  }
+  return nodeMajor < major
 }
 
 module.exports = {
-    parseVersion,
-    nodeGt,
-    nodeLt,
-    nodeLte,
-    nodeGte,
+  parseVersion,
+  nodeGt,
+  nodeLt,
+  nodeLte,
+  nodeGte,
 }
