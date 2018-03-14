@@ -44,7 +44,7 @@ const { nodeGt } = require('noddy')
 
 process.version // v8.9.3
 nodeGt('v2.3.4') // true
-nodeGte(process.version) // false
+nodeGt(process.version) // false
 nodeGt('v20.3.4') // false
 ```
 
@@ -83,9 +83,9 @@ Check if the current Node.js version is less than or equal to the specified one.
 const { nodeLte } = require('noddy')
 
 process.version // v8.9.3
-nodeLt('v2.3.4') // false
-nodeLt(process.version) // true
-nodeLt('v20.3.4') // true
+nodeLte('v2.3.4') // false
+nodeLte(process.version) // true
+nodeLte('v20.3.4') // true
 ```
 
 ---
